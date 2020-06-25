@@ -9,7 +9,7 @@ def some_f(sigma, fn, zeta, f, T90, eps, tn):
     dt = 1 / fs
     f0 = np.median(np.diff(f))
     Nfreq = len(f)
-    t = np.arange(0,(Nfreq-1)*dt+1,dt)
+    t = np.arange(0,dt*(Nfreq),dt)
     
     #Generation of spectrum S
     
@@ -19,10 +19,11 @@ def some_f(sigma, fn, zeta, f, T90, eps, tn):
     B = ((fn**2 -  w**2)**2) + (2*zeta*fn*w)**2
     S = s0 * A / B #Single sided PSD
     
+    print(np.shape(A))
     #Time series generation - Monte Carlo simulation
     
     A = np.sqrt(2*S*f0)
-    B = w.T * t + 2*np.pi * np.kron(np.random.rand(Nfreq,), np.arange(1,Nfreq))
+    B = np.cos((w.T @ t )+ 2*np.pi * np.tile(np.random.rand(Nfreq,), (1,Nfreq)))
     x = A * B #stationary process
     
     #Envelop function E
