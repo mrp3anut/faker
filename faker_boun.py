@@ -27,7 +27,7 @@ def generate_noise(timeLength, noise_type='gaussian', samplingRate = 20 ,outputT
 
 def generate_eq(timeLength, eqCount=1,  samplingRate = 20 ,outputType ='ndarray', t_start = 0,scale=10):
 	
-	y,t = seisgen.some_f(zeta = 0.3, sigma = 0.9,fn =5,T90 = 0.3,eps = 0.4,tn = 30, f = np.linspace(t_start,40,timeLength*samplingRate))
+	y,t = seisgen.generate_eq(zeta = 0.3, sigma = 0.9,fn =5,T90 = 0.3,eps = 0.4,tn = 30, f = np.linspace(t_start,40,timeLength*samplingRate))
 	return y*scale*100
 
 
