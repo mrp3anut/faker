@@ -1,5 +1,6 @@
 import numpy as np
 import random as rd
+from matplotlib import pyplot as plt
 
 def some_f(sigma, fn, zeta, f, T90, eps, tn):
     
@@ -19,11 +20,12 @@ def some_f(sigma, fn, zeta, f, T90, eps, tn):
     B = ((fn**2 -  w**2)**2) + (2*zeta*fn*w)**2
     S = s0 * A / B #Single sided PSD
     
-    print(np.shape(A))
     #Time series generation - Monte Carlo simulation
     
-    A = np.sqrt(2*S*f0)
-    B = np.cos((w.T @ t )+ 2*np.pi * np.tile(np.random.rand(Nfreq,), (1,Nfreq)))
+    A = np.sqrt(2 * S * f0)
+    print(np.shape(t))
+    B = np.cos((w.T @ t )+ 2*np.pi * np.tile(Nfreq, (1,Nfreq)))
+    #print(np.shape(B))
     x = A * B #stationary process
     
     #Envelop function E
