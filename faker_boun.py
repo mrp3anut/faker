@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
 from noise import pnoise1
+import seisgen
 
-
+import matplotlib.pyplot as plt 
 
 #This is a python module to create fake seismological data
 
@@ -24,12 +25,13 @@ def generate_noise(timeLength, noise_type='gaussian', samplingRate = 20 ,outputT
 
 
 
-def generate_eq(timeLength, eqCount=1,  samplingRate = 20 ,outputType ='ndarray', t_start = 0):
-	return
+def generate_eq(timeLength, eqCount=1,  samplingRate = 20 ,outputType ='ndarray', t_start = 0,scale=10):
+	
+	y,t = seisgen.some_f(zeta = 0.3, sigma = 0.9,fn =5,T90 = 0.3,eps = 0.4,tn = 30, f = np.linspace(t_start,40,timeLength*samplingRate))
+	return y*scale*100
 
 
 
-def generate_noise_and_eq(timeLength, noise_type='gaussian', eqCount=1, samplingRate = 20 ,outputType ='ndarray', noise_octave = False, t_start = 0):
+def generate_noise_and_eq(timeLength, noise_type='gaussian', eqCount=1, samplingRate = 20 ,outputType ='ndarray', noise_octave = False, t_start = 0, scale=10):
 
-	return generate_eq(timeLength, eqCount, samplingRate, outputType, t_start) + generate_noise(timeLength, noise_type, samplingRate, outputType,noise_octave, t_start)
-
+	return generate_eq(timeLength, eqCount, samplingRate, outputType, t_start, scale) + generate_noise(timeLength, noise_type, samplingRate, outputType,noise_octave, t_start)

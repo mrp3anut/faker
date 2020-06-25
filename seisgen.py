@@ -37,4 +37,6 @@ def some_f(sigma, fn, zeta, f, T90, eps, tn):
     
     y = x * E
     
-    return(y,t)
+    return y[0], t
+
+
