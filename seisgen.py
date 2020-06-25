@@ -23,8 +23,7 @@ def some_f(sigma, fn, zeta, f, T90, eps, tn):
     #Time series generation - Monte Carlo simulation
     
     A = np.sqrt(2 * S * f0)
-    print(np.shape(t))
-    B = np.cos((w.T @ t )+ 2*np.pi * np.tile(Nfreq, (1,Nfreq)))
+    B = np.cos((w.T * t )+ 2*np.pi * np.tile(Nfreq, (1,Nfreq)))
     #print(np.shape(B))
     x = A * B #stationary process
     
