@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 from noise import pnoise1
-
 import matplotlib.pyplot as plt 
 
 #This is a python module to create fake seismological data
@@ -24,8 +23,10 @@ def generate_noise(timeLength, noise_type='gaussian', samplingRate = 100 ,output
 
 	
 
-def generate_eq(timeLength, eqCount=1,  samplingRate = 100 ,outputType ='ndarray', t_start = 0,scale=10,zeta = 0.3, sigma = 0.9,fn =5,T90 = 0.3,eps = 0.4,tn = 30):
+def generate_eq(timeLength, eqCount=1, samplingRate = 100 ,outputType ='ndarray', t_start = 0, scale=10, params = {"zeta" : 0.3, "sigma" : 0.9,"fn" :5,"T90" : 0.3,"eps" : 0.4,"tn" : 30}):
     
+
+    zeta, sigma, fn, T90, eps, tn = params['zeta'], params['sigma'], params['fn'], params['T90'], params['eps'], params['tn'] 
 
     #Init
     f = np.linspace(t_start,40,timeLength*samplingRate)
