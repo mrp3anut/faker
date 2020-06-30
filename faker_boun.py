@@ -1,7 +1,5 @@
 import numpy as np
-import pandas as pd
 from noise import pnoise1
-import matplotlib.pyplot as plt 
 
 #This is a python module to create fake seismological data
 
