@@ -67,4 +67,4 @@ def generate_eq(timeLength, eqCount=1, samplingRate = 100 ,outputType ='ndarray'
 
 def generate_noise_and_eq(timeLength, noise_type='gaussian', eqCount=1, samplingRate = 20 ,outputType ='ndarray', noise_octave = False, t_start = 0, scale=10, params = {"zeta" : 0.3, "sigma" : 0.9,"fn" :5,"T90" : 0.3,"eps" : 0.4,"tn" : 30}):
 
-	return generate_eq(timeLength, eqCount, samplingRate, outputType, t_start, scale, params = {"zeta" : 0.3, "sigma" : 0.9,"fn" :5,"T90" : 0.3,"eps" : 0.4,"tn" : 30}) + generate_noise(timeLength, noise_type, samplingRate, outputType,noise_octave, t_start)
+	return generate_eq(timeLength, eqCount, samplingRate, outputType, t_start, scale, params) + generate_noise(timeLength, noise_type, samplingRate, outputType,noise_octave, t_start)
